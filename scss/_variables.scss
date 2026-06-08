@@ -1,0 +1,61 @@
+// --- BAREVNÁ PALETA (Linka 360) ---
+$color-linka-bg:     #F4EFE6; // Teplý základ (shodný s Perma rájem)
+$color-linka-yellow: #E0B11F; // Zlatá/Žlutá křída (shodná se Síla ne)
+$color-linka-text:   #22282B; // Tmavá břidlicová pro čitelnost
+$color-linka-brown:  #4B3C29; // Akcentní hnědá pro nadpisy
+
+// Propojení
+$color-linka-green:  #556B2F; // Olivová (půjčená z Perma ráje pro sekci zahrada)
+
+
+//písmo
+$patka: "Libre Baskerville", serif;
+$bezpatka: "Source Sans 3", sans-serif;
+
+// --- RESPONZIVNÍ RESPONDERY / BREAKPOINTS ---
+// Definice rozměrů
+$mob-size:    576px;
+$tablet-size: 768px;
+$pc-size:     1024px;
+
+// Vytvoření zkratky (mixin)
+@mixin mobil {
+  @media (max-width: #{$mob-size}) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-size}) { @content; }
+}
+
+//Použití písma
+// Libre Baskerville: CSS classes
+
+// .libre-baskerville-regular {
+//   font-family: "Libre Baskerville", serif;
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// .libre-baskerville-bold {
+//   font-family: "Libre Baskerville", serif;
+//   font-weight: 700;
+//   font-style: normal;
+// }
+
+// .libre-baskerville-regular-italic {
+//   font-family: "Libre Baskerville", serif;
+//   font-weight: 400;
+//   font-style: italic;
+// }
+
+
+
+// <weight>: Use a value from 200 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+// .source-sans-3-<uniquifier> {
+//   font-family: "Source Sans 3", sans-serif;
+//   font-optical-sizing: auto;
+//   font-weight: <weight>;
+//   font-style: normal;
+// }

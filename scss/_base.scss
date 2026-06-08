@@ -1,0 +1,28 @@
+// Globální nastavení těla webu
+body {
+  font-family: $bezpatka;
+  font-size: 1.15rem;      // Trochu větší, vzdušnější písmo pro klidné čtení
+  line-height: 1.6;
+  color: $color-linka-text;
+  background-color: $color-linka-bg;
+  font-weight: 300;        // Lehčí řez pro čistý, tichý vizuál
+}
+
+// Nadpisy, které nesou příběh a filozofii
+h1, h2, h3, .manifest-title {
+  font-family: $patka;
+  color: $color-linka-brown;
+  font-weight: 700;
+  line-height: 1.3;
+  //margin-bottom: var(--spacing-md);
+}
+
+// Důležité citáty a myšlenky (např. v kruhu nebo úvodu)
+.quote-text {
+  font-family: $bezpatka;
+  font-style: italic;
+  font-weight: 400;
+  color: $color-linka-brown;
+}
+
+

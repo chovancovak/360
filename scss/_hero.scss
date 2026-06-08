@@ -1,0 +1,111 @@
+
+
+.hero-line {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-linka-bg; // Tvých #F4EFE6
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    height: 100vh;
+  }
+
+  // SVG linka se roztáhne přes celé pozadí sekce
+  &__visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Třída pro samotnou čáru - animace vykreslení
+  &__path {
+    fill: none;
+    stroke: $color-linka-yellow; // Tvých #e0b11f
+    stroke-width: 8px; // Můžeš doladit podle oka
+    stroke-linecap: round;
+    
+    // Animace: čára se začne odmazávat a přimazávat
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation: drawLine 3s ease-out forwards;
+  }
+
+  // Text přesuneme do popředí nad linku
+  &__content {
+    position: absolute;
+    z-index: 2;
+    top: 48%; 
+    left: 52%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 40vw; 
+    max-width: 500px;
+
+    // Tady je oprava pomocí tvé mobilní mixiny
+    @include mobil {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      max-width: 100%;
+      
+      // Přidáme padding, aby text nebyl nalepený na okrajích displeje
+      padding: var(--spacing-xl) var(--spacing-md); 
+      
+      // Tento margin odtlačí text pod úroveň zmenšeného kruhu,
+      // takže kruh zůstane nahoře jako krásná designová koruna
+      margin-top: 55vh; 
+    }
+  }
+
+  &__title {
+    font-family: $patka;
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem); 
+    color: $color-linka-brown;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+
+    // Na mobilu mírně zafixujeme velikost, aby nadpis dominoval
+    @include mobil {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__motto {
+    font-family: $bezpatka;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    color: $color-linka-text;
+    line-height: 1.4;
+
+    // Na mobilu zvětšíme pro pohodlné čtení
+    @include mobil {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Klíčové snímky pro animaci nakreslení linky
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
