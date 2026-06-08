@@ -1,0 +1,66 @@
+.boundaries {
+  padding: var(--spacing-xl) 0;
+  background-color: $color-linka-bg; // Tvých #F4EFE6
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 var(--spacing-lg);
+
+    // Na mobilu složíme body pod sebe
+    @include mobil {
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+  }
+
+  &__point {
+    flex: 1;
+    text-align: center;
+    font-family: $bezpatka;
+    color: lighten($color-linka-text, 20%); // Jemnější barva pro okrajové body
+    font-size: 1.2rem;
+    padding: var(--spacing-md);
+  }
+
+  &__center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  // Tvoje ústřední žluté žloutkové plátno z diagramu
+  &__circle {
+    width: clamp(280px, 35vw, 450px);
+    height: clamp(280px, 35vw, 450px);
+    background-color: $color-linka-yellow; // Tvých #e0b11f
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    box-shadow: 0 10px 30px rgba($color-linka-brown, 0.05); // Velmi jemný stín pro hloubku
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02); // Jemný interaktivní pohyb při najetí myší
+    }
+  }
+
+  &__text {
+    font-family: $patka; // Libre Baskerville dodá textu v kruhu váhu
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    color: $color-linka-brown; // Tmavá hnědá pro skvělý kontrast na žluté
+    text-align: center;
+    line-height: 1.4;
+  }
+}
