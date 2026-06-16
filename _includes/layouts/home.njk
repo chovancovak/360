@@ -1,12 +1,15 @@
 {% include "partials/head.njk" %}
 
+{% include "partials/menu.njk" %}
+
 <body class="site-layout">
 
   <main class="site-layout__main">
     {{ content | safe }}
   </main>
 
-  {% include "partials/footer.njk" %}
 
 </body>
+
+{% include "partials/footer.njk" %}
 </html>

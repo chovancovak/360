@@ -21,6 +21,10 @@ h1, h2, h3, .manifest-title {
   color: #4B3C29;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .boundaries {
   padding: var(--spacing-xl) 0;
   background-color: #F4EFE6;
@@ -56,21 +60,54 @@ h1, h2, h3, .manifest-title {
   flex: 2;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.boundaries__circle-wrapper {
+  position: relative;
+  width: clamp(320px, 38vw, 480px);
+  height: clamp(320px, 38vw, 480px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boundaries__curved-svg {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.boundaries__curved-title {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  fill: #4B3C29;
+  letter-spacing: 1px;
 }
 .boundaries__circle {
-  width: clamp(280px, 35vw, 450px);
-  height: clamp(280px, 35vw, 450px);
+  width: 82%;
+  height: 82%;
   background-color: #E0B11F;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xl);
-  box-shadow: 0 10px 30px rgba(75, 60, 41, 0.05);
+  box-shadow: 0 10px 30px rgba(75, 60, 41, 0.04);
   transition: transform 0.3s ease;
 }
 .boundaries__circle:hover {
   transform: scale(1.02);
+}
+.boundaries__circle-text {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 1.4vw, 1.15rem);
+  color: #4B3C29;
+  text-align: center;
+  line-height: 1.5;
 }
 .boundaries__text {
   font-family: "Libre Baskerville", serif;
@@ -79,6 +116,57 @@ h1, h2, h3, .manifest-title {
   color: #4B3C29;
   text-align: center;
   line-height: 1.4;
+}
+
+.main-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2rem;
+}
+@media (max-width: 576px) {
+  .main-nav {
+    position: relative;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    width: 100%;
+  }
+}
+.main-nav__container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 576px) {
+  .main-nav__container {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+.main-nav__link {
+  text-decoration: none;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #4B3C29;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.main-nav__link:hover {
+  color: #E0B11F;
+}
+.main-nav__link--cta {
+  font-family: "Libre Baskerville", serif;
+  text-transform: none;
+  font-weight: 700;
+  border-bottom: 2px solid #E0B11F;
+  padding-bottom: 2px;
+}
+.main-nav__link--cta:hover {
+  border-bottom-color: #4B3C29;
 }
 
 .hero-line {
@@ -91,40 +179,83 @@ h1, h2, h3, .manifest-title {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 768px) {
+  .hero-line {
+    min-height: auto;
+    padding-top: 8rem;
+  }
+}
+@media (max-width: 576px) {
+  .hero-line {
+    padding-top: 4rem;
+  }
+}
 .hero-line__wrapper {
   position: relative;
   width: 100%;
   max-width: 1920px;
   height: 100vh;
 }
+@media (max-width: 768px) {
+  .hero-line__wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .hero-line__visual {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1200px;
   height: 100%;
   z-index: 1;
+}
+@media (max-width: 768px) {
+  .hero-line__visual {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    height: auto;
+    width: 90%;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 576px) {
+  .hero-line__visual {
+    max-width: 200px;
+  }
 }
 .hero-line__visual svg {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media (max-width: 768px) {
+  .hero-line__visual svg {
+    height: auto;
+  }
 }
 .hero-line__path {
   fill: none;
   stroke: #E0B11F;
   stroke-width: 8px;
   stroke-linecap: round;
-  stroke-dasharray: 4000;
-  stroke-dashoffset: 4000;
-  animation: drawLine 3s ease-out forwards;
+  stroke-dasharray: 6000;
+  stroke-dashoffset: 6000;
+  animation: drawLine 3.5s ease-out forwards;
 }
 .hero-line__content {
   position: absolute;
   z-index: 2;
   top: 48%;
-  left: 52%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 40vw;
@@ -138,8 +269,8 @@ h1, h2, h3, .manifest-title {
     transform: none;
     width: 100%;
     max-width: 100%;
-    padding: var(--spacing-xl) var(--spacing-md);
-    margin-top: 55vh;
+    padding: 1.5rem var(--spacing-md) 2rem var(--spacing-md);
+    margin-top: 1rem;
   }
 }
 .hero-line__title {
@@ -149,7 +280,7 @@ h1, h2, h3, .manifest-title {
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .hero-line__title {
     font-size: 2.2rem;
   }
@@ -158,18 +289,274 @@ h1, h2, h3, .manifest-title {
   font-family: "Source Sans 3", sans-serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   color: #22282B;
   line-height: 1.4;
-}
-@media (max-width: 576px) {
-  .hero-line__motto {
-    font-size: 1.1rem;
-  }
 }
 
 @keyframes drawLine {
   to {
     stroke-dashoffset: 0;
   }
+}
+.btn-cta {
+  display: inline-block;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  background-color: #E0B11F;
+  color: #4B3C29;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  margin: 2rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(75, 60, 41, 0.08);
+}
+
+.section-number {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #B85C38;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.intro-comm {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.intro-comm__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.intro-comm__context {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: #556B2F;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto 3rem auto;
+  font-weight: 400;
+}
+.intro-comm__meta {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #E0B11F;
+  margin-bottom: 1.5rem;
+  margin-top: 5rem;
+  font-weight: 400;
+}
+.intro-comm__heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.4;
+  color: #4B3C29;
+  margin-bottom: 2rem;
+}
+.intro-comm__sub {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #B85C38;
+  margin-bottom: 4rem;
+  margin-top: 7rem;
+}
+.intro-comm__bullets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 5rem;
+  text-align: left;
+}
+@media (max-width: 576px) {
+  .intro-comm__bullets {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+}
+.intro-comm__bullet {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-left: 3px solid #556B2F;
+  padding-left: 1rem;
+  color: #4B3C29;
+}
+
+.principles {
+  padding: 5rem 2rem;
+}
+.principles__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.principles__header {
+  margin-bottom: 5rem;
+  max-width: 700px;
+}
+.principles__main-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1.5rem;
+}
+.principles__lead {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #4B3C29;
+}
+.principles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 5rem;
+       column-gap: 5rem;
+  row-gap: 4rem;
+}
+@media (max-width: 576px) {
+  .principles__grid {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
+}
+.principles__item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #556B2F;
+}
+.principles__item p {
+  color: #22282B;
+  font-size: 1.1rem;
+}
+.principles__principles-footer {
+  grid-column: span 2;
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(75, 60, 41, 0.1);
+}
+@media (max-width: 576px) {
+  .principles__principles-footer {
+    grid-column: span 1;
+  }
+}
+.principles__principles-footer p {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #4B3C29;
+  text-align: center;
+}
+
+.about {
+  padding: 5rem 2rem;
+}
+.about__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about__header {
+  margin-bottom: 4rem;
+}
+.about__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.about__content {
+  display: flex;
+  justify-content: flex-end;
+}
+.about__text-block {
+  max-width: 750px;
+  width: 100%;
+}
+.about__text-block p {
+  margin-bottom: 1.8rem;
+  font-size: 1.15rem;
+}
+.about__highlight {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #B85C38;
+  line-height: 1.4;
+}
+.about__footer {
+  margin-top: 5rem;
+  max-width: 750px;
+  background-color: rgba(224, 177, 31, 0.1);
+  padding: 3rem;
+  border-radius: 4px;
+}
+@media (max-width: 576px) {
+  .about__footer {
+    padding: 1.5rem;
+  }
+}
+.about__footer p {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #4B3C29;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cta-block {
+  padding: 10rem 2rem;
+  text-align: center;
+  background-color: #4B3C29;
+  color: #F4EFE6;
+}
+.cta-block__container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.cta-block__title {
+  color: #F4EFE6;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+.cta-block__text {
+  color: rgba(244, 239, 230, 0.8);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.cta-block .btn-cta {
+  background-color: #F4EFE6;
+  color: #4B3C29;
+}
+.cta-block .btn-cta:hover {
+  background-color: #E0B11F;
+}
+
+.site-footer {
+  background-color: #F4EFE6;
+  padding: 6rem 2rem 4rem 2rem;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.95rem;
+  color: #556B2F;
+}
+.site-footer__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(75, 60, 41, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .site-footer__container {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+}
+.site-footer p {
+  margin: 0;
+  font-weight: 300;
 }/*# sourceMappingURL=style.css.map */

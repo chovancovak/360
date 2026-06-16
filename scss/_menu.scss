@@ -1,0 +1,54 @@
+.main-nav {
+  position: absolute; // Drží se nahoře, neruší kruh
+  top: 0;
+  right: 0;
+  z-index: 100;
+  padding: 2rem;
+
+  @include mobil {
+    position: relative; // Na mobilu uteče z kruhu dolů nebo nad něj
+    padding: 1.5rem 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    @include mobil {
+      justify-content: center;
+      flex-wrap: wrap; // Aby se odkazy na malém displeji naskládaly pod sebe
+      gap: 1rem;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: $bezpatka;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: $color-linka-brown;
+    letter-spacing: 1px;
+    text-transform: uppercase; // Jemný industriální detail (číslo linky)
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-linka-yellow;
+    }
+
+    // Speciální zvýrazněný odkaz pro "Přidejte se"
+    &--cta {
+      font-family: $patka;
+      text-transform: none;
+      font-weight: 700;
+      border-bottom: 2px solid $color-linka-yellow;
+      padding-bottom: 2px;
+      
+      &:hover {
+        border-bottom-color: $color-linka-brown;
+      }
+    }
+  }
+}

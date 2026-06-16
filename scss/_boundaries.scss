@@ -35,24 +35,63 @@
     flex: 2;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
-  // Tvoje ústřední žluté žloutkové plátno z diagramu
+  // Nový obal pro kruh i ohlé SVG nad ním
+  &__circle-wrapper {
+    position: relative;
+    width: clamp(320px, 38vw, 480px);
+    height: clamp(320px, 38vw, 480px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Stylování zakulaceného nadpisu
+  &__curved-svg {
+    position: absolute;
+    top: -20px; // Mírný posun nahoru, aby text dýchal kousek NAD hranicí kruhu
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none; // Aby SVG nepřekáželo klikání
+  }
+
+  &__curved-title {
+    font-family: $patka; // Tvoje Libre Baskerville
+    font-weight: 700;
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    fill: $color-linka-brown; // Barva textu
+    letter-spacing: 1px; // Jemné rozestupy mezi písmeny, aby se na oblouku lépe četlo
+  }
+
+  // Upravený samotný žlutý kruh
   &__circle {
-    width: clamp(280px, 35vw, 450px);
-    height: clamp(280px, 35vw, 450px);
-    background-color: $color-linka-yellow; // Tvých #e0b11f
+    width: 82%; // Kruh mírně zmenšíme uvnitř wrapperu, aby nad ním měl text z venku místo
+    height: 82%;
+    background-color: $color-linka-yellow;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-xl);
-    box-shadow: 0 10px 30px rgba($color-linka-brown, 0.05); // Velmi jemný stín pro hloubku
+    padding: var(--spacing-xl); // Obrovský vnitřní prostor, aby text nedoléhal k okrajům
+    box-shadow: 0 10px 30px rgba($color-linka-brown, 0.04);
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.02); // Jemný interaktivní pohyb při najetí myší
+      transform: scale(1.02);
     }
+  }
+
+  &__circle-text {
+    font-family: $bezpatka; // Přepnuto na bezpatkový Source Sans pro lepší čitelnost dlouhého textu v kruhu
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.4vw, 1.15rem);
+    color: $color-linka-brown;
+    text-align: center;
+    line-height: 1.5;
   }
 
   &__text {

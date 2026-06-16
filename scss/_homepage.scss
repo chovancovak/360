@@ -1,0 +1,280 @@
+// --- GLOBÁLNÍ TLAČÍTKO ---
+.btn-cta {
+  display: inline-block;
+  font-family: $patka;
+  font-weight: 700;
+  background-color: $color-linka-yellow;
+  color: $color-linka-brown;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px; // Krásně kulaté, organické tlačítko
+  margin: 2rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba($color-linka-brown, 0.08);
+  }
+}
+
+// --- JEMNÉ ČÍSLOVÁNÍ SEKCE ---
+.section-number {
+  font-family: $bezpatka;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $color-perma-clay;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+// ==========================================
+// 1. SEKCE: ÚVODNÍ MYŠLENKA (KOMUNITA)
+// ==========================================
+.intro-comm {
+  padding: 3rem 2rem;
+  text-align: center;
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  // Stylování tvé nové úvodní věty
+  &__context {
+    font-family: $patka; // Libre Baskerville
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    color: $color-linka-green; // Olivová ze zahrady dodá ten ekologický/udržitelný tón
+    line-height: 1.6;
+    max-width: 650px; // Zúžíme řádek, aby se to příjemně četlo
+    margin: 0 auto 3rem auto; // 3rem mezera dole ji krásně oddělí od hlavního nadpisu
+    font-weight: 400;
+  }
+
+  &__meta {
+    font-family: $bezpatka;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: $color-linka-yellow;
+    margin-bottom: 1.5rem;
+    margin-top: 5rem;
+    font-weight: 400;
+  }
+
+  &__heading {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.4;
+    color: $color-linka-brown;
+    margin-bottom: 2rem;
+  }
+
+  &__sub {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    color: $color-perma-clay; // Jílová pro jemné zvýraznění výzvy
+    margin-bottom: 4rem;
+    margin-top: 7rem;
+  }
+
+  // Seznam 4 mini-bodů pod sebou/vedle sebe
+  &__bullets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 5rem;
+    text-align: left;
+
+    @include mobil {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+  }
+
+  &__bullet {
+    font-family: $patka;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-left: 3px solid $color-linka-green;
+    padding-left: 1rem;
+    color: $color-linka-brown;
+  }
+}
+
+// ==========================================
+// 2. SEKCE: PRINCIPY
+// ==========================================
+.principles {
+  padding: 5rem 2rem;
+  
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 5rem;
+    max-width: 700px;
+  }
+
+  &__main-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+
+  &__lead {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: $color-linka-brown;
+  }
+
+  // Asymetrická mřížka s principy (2 sloupce na PC)
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+    row-gap: 4rem;
+
+    @include mobil {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
+  }
+
+  &__item {
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: $color-linka-green;
+    }
+
+    p {
+      color: $color-linka-text;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__principles-footer {
+    grid-column: span 2;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba($color-linka-brown, 0.1);
+    
+    @include mobil {
+      grid-column: span 1;
+    }
+
+    p {
+      font-family: $patka;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: $color-linka-brown;
+      text-align: center;
+    }
+  }
+}
+
+// ==========================================
+// 3. SEKCE: O NÁS
+// ==========================================
+.about {
+  padding: 5rem 2rem;
+  
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  // Text posuneme mírně doprava na PC, ať web není nudně vycentrovaný
+  &__content {
+    display: flex;
+    justify-content: flex-end; 
+  }
+
+  &__text-block {
+    max-width: 750px; // Text se neroztáhne na celou šířku, drží si knižní formát
+    width: 100%;
+
+    p {
+      margin-bottom: 1.8rem;
+      font-size: 1.15rem;
+    }
+  }
+
+  &__highlight {
+    font-family: $patka;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $color-perma-clay;
+    line-height: 1.4;
+  }
+
+  &__footer {
+    margin-top: 5rem;
+    max-width: 750px;
+    background-color: rgba($color-linka-yellow, 0.1); // Velmi jemný žlutý závoj na pozadí závěru
+    padding: 3rem;
+    border-radius: 4px;
+
+    @include mobil {
+      padding: 1.5rem;
+    }
+
+    p {
+      font-family: $patka;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: $color-linka-brown;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// ==========================================
+// 4. SEKCE: KONTAKT / CTA BLOCK
+// ==========================================
+.cta-block {
+  padding: 10rem 2rem;
+  text-align: center;
+  background-color: $color-linka-brown; // Obrátíme kontrast – tma dává pocit bezpečí a tepla
+  color: $color-linka-bg;
+
+  &__container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: $color-linka-bg; // Nadpis musí zbělat
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: rgba($color-linka-bg, 0.8);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  // Tlačítko uvnitř tmavého bloku mírně upravíme pro kontrast
+  .btn-cta {
+    background-color: $color-linka-bg;
+    color: $color-linka-brown;
+
+    &:hover {
+      background-color: $color-linka-yellow;
+    }
+  }
+}
