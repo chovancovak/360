@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 .boundaries {
   padding: var(--spacing-xl) 0;
   background-color: $color-linka-bg; // Tvých #F4EFE6
@@ -26,7 +29,7 @@
     flex: 1;
     text-align: center;
     font-family: $bezpatka;
-    color: lighten($color-linka-text, 20%); // Jemnější barva pro okrajové body
+    background-color: color.adjust($color-linka-yellow, $lightness: 20%); // Jemnější barva pro okrajové body
     font-size: 1.2rem;
     padding: var(--spacing-md);
   }

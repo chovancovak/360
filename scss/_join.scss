@@ -1,0 +1,325 @@
+@use "variables" as *;
+
+// ========================================
+// PŘIDEJTE SE
+// ========================================
+
+.join {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 1.5rem;
+  background-color: $color-linka-bg;
+  color: $color-linka-text;
+
+  // Jemná žlutá linka v pozadí
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4rem;
+    right: -9rem;
+    width: 23rem;
+    height: 23rem;
+    border: 3px solid rgba($color-linka-yellow, 0.38);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1120px);
+    margin: 0 auto;
+  }
+
+  // ----------------------------------------
+  // Hlavička
+  // ----------------------------------------
+
+  &__header {
+    max-width: 850px;
+    margin-bottom: 4.5rem;
+  }
+
+  &__title {
+    max-width: 760px;
+    margin: 1rem 0 1.5rem;
+    color: $color-linka-brown;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+  }
+
+  &__lead {
+    max-width: 760px;
+    margin: 0;
+    font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+    line-height: 1.65;
+  }
+
+  // ----------------------------------------
+  // Hlavní obsah
+  // ----------------------------------------
+
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: clamp(3rem, 7vw, 6.5rem);
+    align-items: start;
+  }
+
+  &__text {
+    max-width: 680px;
+
+    > p {
+      margin: 0 0 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+  }
+
+  // ----------------------------------------
+  // Kontakty
+  // ----------------------------------------
+
+  &__contact {
+    margin-top: 3rem;
+    padding: clamp(2rem, 5vw, 3.25rem);
+    background-color: rgba(#ffffff, 0.58);
+    border-left: 5px solid $color-linka-yellow;
+    border-radius: 0 1.5rem 1.5rem 0;
+  }
+
+  &__contact-title {
+    margin: 0 0 2rem;
+    color: $color-linka-brown;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  &__contact-list {
+    display: grid;
+    gap: 1.35rem;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: grid;
+      gap: 0.25rem;
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid rgba($color-linka-brown, 0.18);
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+
+    a {
+      width: fit-content;
+      color: $color-linka-brown;
+      font-size: 1.12rem;
+      font-weight: 600;
+      text-decoration-color: rgba($color-linka-yellow, 0.8);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.3rem;
+      transition:
+        color 180ms ease,
+        text-decoration-color 180ms ease;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-perma-clay;
+        text-decoration-color: $color-perma-clay;
+      }
+
+      &:focus-visible {
+        outline: 3px solid rgba($color-linka-yellow, 0.55);
+        outline-offset: 0.35rem;
+        border-radius: 0.15rem;
+      }
+    }
+  }
+
+  &__contact-label {
+    color: $color-linka-green;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  // ----------------------------------------
+  // Fotografie
+  // ----------------------------------------
+
+  &__photo {
+    position: relative;
+    margin: 0;
+
+    // Žlutý kruh za fotografií
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -1.5rem;
+      right: -1.5rem;
+      width: 72%;
+      aspect-ratio: 1;
+      background-color: $color-linka-yellow;
+      border-radius: 50%;
+      opacity: 0.85;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 46% 46% 1.5rem 1.5rem;
+      box-shadow: 0 1.5rem 3.5rem rgba($color-linka-brown, 0.16);
+    }
+
+    figcaption {
+      margin-top: 1rem;
+      color: rgba($color-linka-text, 0.72);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+
+  // ----------------------------------------
+  // Závěr
+  // ----------------------------------------
+
+  &__footer {
+    max-width: 850px;
+    margin: 6rem auto 0;
+    padding-top: 3rem;
+    border-top: 1px solid rgba($color-linka-brown, 0.2);
+    text-align: center;
+
+    p {
+      margin: 0;
+      color: $color-linka-brown;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      font-style: italic;
+      line-height: 1.55;
+    }
+  }
+}
+
+
+// ========================================
+// TABLET
+// ========================================
+
+@media (max-width: 1024px) {
+  .join {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+
+    &__content {
+      gap: 3.5rem;
+    }
+  }
+}
+
+
+// ========================================
+// MOBIL A MENŠÍ TABLET
+// ========================================
+
+@media (max-width: 768px) {
+  .join {
+    padding: 4.5rem 1.25rem;
+
+    &::before {
+      top: 2rem;
+      right: -11rem;
+      width: 20rem;
+      height: 20rem;
+    }
+
+    &__header {
+      margin-bottom: 3.5rem;
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    &__photo {
+      order: -1;
+      width: min(100%, 430px);
+      margin: 0 auto;
+
+      &::before {
+        top: -1rem;
+        right: -1rem;
+      }
+    }
+
+    &__contact {
+      margin-top: 2.5rem;
+    }
+
+    &__footer {
+      margin-top: 4.5rem;
+    }
+  }
+}
+
+
+// ========================================
+// MALÝ MOBIL
+// ========================================
+
+@media (max-width: 576px) {
+  .join {
+    padding: 3.5rem 1rem;
+
+    &__header {
+      margin-bottom: 2.75rem;
+    }
+
+    &__lead {
+      font-size: 1.1rem;
+    }
+
+    &__content {
+      gap: 2.75rem;
+    }
+
+    &__text {
+      > p {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+    }
+
+    &__contact {
+      padding: 1.75rem 1.35rem;
+      border-left-width: 4px;
+      border-radius: 0 1rem 1rem 0;
+    }
+
+    &__contact-list {
+      a {
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    &__footer {
+      margin-top: 3.75rem;
+      padding-top: 2.5rem;
+    }
+  }
+}

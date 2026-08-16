@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .site-footer {
   background-color: $color-linka-bg; // Stejné krémové pozadí, žádný tvrdý předěl
   padding: 6rem 2rem 4rem 2rem;       // Hodně vzduchu nad textem pro pocit ticha

@@ -1,0 +1,479 @@
+@use "variables" as *;
+
+
+// ========================================
+// PODSTRÁNKA 360
+// ========================================
+
+.page-360 {
+  overflow: hidden;
+  background-color: $color-linka-bg;
+  color: $color-linka-text;
+
+  &__container {
+    width: min(100% - 3rem, 1120px);
+    margin-inline: auto;
+  }
+
+  &__eyebrow {
+    margin: 0 0 1rem;
+    color: $color-linka-green;
+    font-family: $bezpatka;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 1.75rem;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.16;
+  }
+
+
+  // ========================================
+  // ÚVOD
+  // ========================================
+
+  &__hero {
+    position: relative;
+    padding: clamp(6rem, 11vw, 10rem) 0 clamp(5rem, 9vw, 8rem);
+
+    // Jemná pokračující linka v pozadí
+    &::before {
+      content: "";
+      position: absolute;
+      top: -13rem;
+      right: -12rem;
+      width: clamp(25rem, 48vw, 43rem);
+      aspect-ratio: 1;
+      border: clamp(3px, 0.4vw, 6px) solid rgba($color-linka-yellow, 0.55);
+      border-radius: 47% 53% 51% 49% / 54% 45% 55% 46%;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 0 2.25rem;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(3.4rem, 9vw, 7.5rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  &__lead {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0;
+    font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+    line-height: 1.65;
+  }
+
+
+  // ========================================
+  // SKUTEČNÁ LINKA
+  // ========================================
+
+  &__route {
+    padding: clamp(5rem, 9vw, 8rem) 0;
+    background-color: rgba(#ffffff, 0.42);
+  }
+
+  &__route-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: center;
+  }
+
+  &__route-text {
+    max-width: 680px;
+
+    p:not(.page-360__eyebrow) {
+      margin: 0 0 1.4rem;
+      font-size: 1.08rem;
+      line-height: 1.8;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__route-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 470px;
+  }
+
+  &__route-line {
+    width: 5px;
+    flex: 1;
+    min-height: 95px;
+    background-color: $color-linka-yellow;
+    border-radius: 999px;
+  }
+
+  &__stop {
+    width: 1.2rem;
+    height: 1.2rem;
+    flex: 0 0 auto;
+    background-color: $color-linka-bg;
+    border: 4px solid $color-linka-yellow;
+    border-radius: 50%;
+  }
+
+  &__bus-number {
+    display: grid;
+    place-items: center;
+    width: clamp(10rem, 20vw, 14rem);
+    aspect-ratio: 1;
+    flex: 0 0 auto;
+    margin: 1.25rem 0;
+    background-color: $color-linka-yellow;
+    border-radius: 48% 52% 45% 55% / 52% 46% 54% 48%;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(3.6rem, 7vw, 5.5rem);
+    line-height: 1;
+    transform: rotate(-3deg);
+  }
+
+
+  // ========================================
+  // KRUH 360°
+  // ========================================
+
+  &__circle-section {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+  }
+
+  &__circle-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(3.5rem, 8vw, 8rem);
+    align-items: center;
+  }
+
+  &__circle {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 430px);
+    aspect-ratio: 1;
+    margin-inline: auto;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border: 4px solid $color-linka-yellow;
+      border-radius: 50%;
+    }
+
+    &::before {
+      inset: 3%;
+      border-radius: 47% 53% 50% 50% / 52% 46% 54% 48%;
+      transform: rotate(7deg);
+    }
+
+    &::after {
+      inset: 10%;
+      border-width: 1px;
+      border-color: rgba($color-linka-brown, 0.2);
+      border-radius: 53% 47% 46% 54% / 48% 55% 45% 52%;
+      transform: rotate(-9deg);
+    }
+
+    span {
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(4.2rem, 10vw, 7.5rem);
+      line-height: 1;
+    }
+  }
+
+  &__circle-text {
+    max-width: 650px;
+
+    p:not(.page-360__eyebrow) {
+      margin: 0 0 1.4rem;
+      font-size: 1.08rem;
+      line-height: 1.8;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+  // ========================================
+  // PROPOJENÍ
+  // ========================================
+
+  &__connections {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background-color: $color-linka-brown;
+    color: $color-linka-bg;
+
+    .page-360__eyebrow {
+      color: $color-linka-yellow;
+    }
+
+    h2 {
+      color: $color-linka-bg;
+    }
+  }
+
+  &__connections-header {
+    max-width: 850px;
+    margin-bottom: clamp(3.5rem, 7vw, 6rem);
+
+    > p:last-child {
+      max-width: 720px;
+      margin: 0;
+      font-size: 1.16rem;
+      line-height: 1.75;
+    }
+  }
+
+  &__connections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  &__connection {
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    border: 1px solid rgba($color-linka-bg, 0.2);
+    border-radius: 1.25rem;
+
+    &:last-child {
+      grid-column: 1 / -1;
+      width: calc(50% - 0.75rem);
+      justify-self: center;
+    }
+
+    > p:last-child {
+      max-width: 480px;
+      margin: 0;
+      color: rgba($color-linka-bg, 0.82);
+      line-height: 1.7;
+    }
+  }
+
+  &__connection-pair {
+    display: grid;
+    grid-template-columns: auto minmax(2rem, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin: 0 0 1.5rem;
+    color: $color-linka-bg;
+    font-family: $patka;
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  }
+
+  &__connection-line {
+    height: 3px;
+    background-color: $color-linka-yellow;
+    border-radius: 999px;
+  }
+
+
+  // ========================================
+  // ZÁVĚR
+  // ========================================
+
+  &__ending {
+    padding: clamp(6rem, 12vw, 10rem) 0;
+  }
+
+  &__ending-content {
+    max-width: 900px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__ending-text {
+    margin: 0;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(2rem, 5vw, 3.7rem);
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  &__ending-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3.5rem;
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 0.9rem 1.6rem;
+    background-color: $color-linka-yellow;
+    border: 2px solid $color-linka-yellow;
+    border-radius: 999px;
+    color: $color-linka-brown;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+      border-color: $color-linka-brown;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba($color-linka-yellow, 0.45);
+      outline-offset: 4px;
+    }
+  }
+
+  &__text-link {
+    color: $color-linka-brown;
+    font-weight: 600;
+    text-decoration-color: $color-linka-yellow;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3rem;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-perma-clay;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba($color-linka-yellow, 0.45);
+      outline-offset: 4px;
+    }
+  }
+}
+
+
+// ========================================
+// TABLET
+// ========================================
+
+@media (max-width: 768px) {
+  .page-360 {
+    &__container {
+      width: min(100% - 2.5rem, 680px);
+    }
+
+    &__hero {
+      &::before {
+        top: -8rem;
+        right: -15rem;
+        opacity: 0.65;
+      }
+    }
+
+    &__route-grid,
+    &__circle-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__route-visual {
+      min-height: 330px;
+    }
+
+    &__route-text,
+    &__circle-text {
+      max-width: none;
+    }
+
+    &__circle {
+      width: min(78vw, 390px);
+    }
+
+    &__connections-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__connection {
+      &:last-child {
+        grid-column: auto;
+        width: auto;
+      }
+    }
+  }
+}
+
+
+// ========================================
+// MOBIL
+// ========================================
+
+@media (max-width: 576px) {
+  .page-360 {
+    &__container {
+      width: min(100% - 2rem, 520px);
+    }
+
+    &__hero {
+      padding-top: 5rem;
+    }
+
+    &__title {
+      font-size: clamp(3rem, 16vw, 4.7rem);
+    }
+
+    &__lead {
+      font-size: 1.14rem;
+    }
+
+    &__route-visual {
+      min-height: 280px;
+    }
+
+    &__bus-number {
+      width: 9rem;
+      font-size: 3.6rem;
+    }
+
+    &__circle {
+      width: min(88vw, 340px);
+    }
+
+    &__connection {
+      padding: 1.5rem;
+    }
+
+    &__connection-pair {
+      gap: 0.7rem;
+      font-size: 1.15rem;
+    }
+
+    &__ending-text {
+      br {
+        display: none;
+      }
+    }
+
+    &__ending-links {
+      flex-direction: column;
+    }
+  }
+}
