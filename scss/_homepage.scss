@@ -110,72 +110,202 @@
 // 2. SEKCE: PRINCIPY
 // ==========================================
 .principles {
-  padding: 5rem 2rem;
-  
-  &__container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
 
-  &__header {
-    margin-bottom: 5rem;
-    max-width: 700px;
-  }
-
-  &__main-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1.5rem;
-  }
-
-  &__lead {
-    font-size: 1.3rem;
-    font-style: italic;
-    color: $color-linka-brown;
-  }
-
-  // Asymetrická mřížka s principy (2 sloupce na PC)
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 5rem;
-    row-gap: 4rem;
-
-    @include mobil {
-      grid-template-columns: 1fr;
-      row-gap: 3rem;
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   &__item {
-    h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: $color-linka-green;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background-color: rgba(#ffffff, 0.46);
+    border: 1px solid rgba($color-linka-brown, 0.12);
+    border-radius: 1.5rem;
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1.25rem 2.5rem rgba($color-linka-brown, 0.1);
     }
 
-    p {
-      color: $color-linka-text;
-      font-size: 1.1rem;
+    &--rest {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      min-height: 360px;
+
+      .principles__figure {
+        height: 100%;
+        aspect-ratio: auto;
+      }
+
+      .principles__content {
+        align-self: center;
+        padding: clamp(2rem, 5vw, 4rem);
+      }
     }
   }
 
-  &__principles-footer {
-    grid-column: span 2;
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba($color-linka-brown, 0.1);
-    
-    @include mobil {
-      grid-column: span 1;
+  &__figure {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    min-height: 0;
+    overflow: hidden;
+    margin: 0;
+    background-color: rgba($color-linka-green, 0.12);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba($color-linka-brown, 0.16),
+        transparent 42%
+      );
+      pointer-events: none;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms ease;
+
+    .principles__item:hover & {
+      transform: scale(1.025);
+    }
+
+    // Jemné doladění ořezu jednotlivých fotografií
+    &--motivation {
+      object-position: center 62%;
+    }
+
+    &--ability {
+      object-position: center center;
+    }
+
+    &--life {
+      object-position: center center;
+    }
+
+    &--mistake {
+      object-position: center 55%;
+    }
+
+    &--individuality {
+      object-position: center center;
+    }
+
+    &--cooperation {
+      object-position: center 62%;
+    }
+
+    &--rest {
+      object-position: center center;
+    }
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+
+    h3 {
+      max-width: 16ch;
+      margin: 0 0 1.15rem;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+      font-weight: 400;
+      line-height: 1.18;
     }
 
     p {
-      font-family: $patka;
-      font-size: 1.25rem;
-      font-style: italic;
-      color: $color-linka-brown;
-      text-align: center;
+      margin: 0;
+      line-height: 1.75;
     }
+  }
+
+  &__number {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: $color-linka-green;
+    font-family: $bezpatka;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-width: 768px) {
+  .principles {
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__item--rest {
+      grid-column: auto;
+      display: flex;
+      min-height: 0;
+
+      .principles__figure {
+        aspect-ratio: 3 / 2;
+      }
+
+      .principles__content {
+        padding: clamp(1.6rem, 3vw, 2.4rem);
+      }
+    }
+
+    &__content h3 {
+      max-width: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .principles {
+
+    &__grid {
+      gap: 1.25rem;
+    }
+
+    &__item {
+      border-radius: 1.15rem;
+    }
+
+    &__content {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 1.65rem;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .principles__item,
+  .principles__image {
+    transition: none;
+  }
+
+  .principles__item:hover {
+    transform: none;
+  }
+
+  .principles__item:hover .principles__image {
+    transform: none;
   }
 }
 
