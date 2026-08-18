@@ -77,35 +77,66 @@ Stránka obsahuje podrobnosti o programu, přístupu k dětem, venkovním zázem
 
 Web je jednoduchý statický projekt postavený v Eleventy a stylovaný pomocí SCSS.
 
+### Formuláře
+
+Krátký formulář na stránce Asijské divočiny využívá **Netlify Forms**. Formulář je součástí statického HTML a Netlify jej rozpozná při sestavení a nasazení webu.
+
+Formulář obsahuje:
+
+- jméno a věk dítěte;
+- jméno zákonného zástupce;
+- e-mail a telefon;
+- prostor pro dotaz nebo důležitou poznámku;
+- odkaz na informace o zpracování osobních údajů;
+- skryté honeypot pole pro základní ochranu proti spamu.
+
+Po odeslání je uživatel přesměrován na stránku `/dekujeme/`.
+
+Podrobná závazná přihláška bude rodičům odeslána až po potvrzení volného místa. Bude vytvořena samostatně prostřednictvím Google Forms a nebude veřejnou součástí webu.
+
 ### Hlavní soubory a složky
 
 ```text
 web360/
-├── _includes/          # šablony a partialy, včetně grafiky úvodní linky
-├── _site/              # vygenerovaný web
-├── css/                # zkompilované styly
+├── _includes/
+│   ├── layouts/                         # základní šablony stránek
+│   └── partials/                        # partialy včetně grafiky úvodní linky
+├── _site/                               # vygenerovaný web
+├── akce/
+│   └── asie.html                        # Zažij asijskou divočinu
+├── css/                                 # zkompilované styly
 ├── img/
-│   └── 360linka.svg
+│   ├── 360linka.svg
+│   ├── karolina-linka-360.jpg
+│   └── asie/                            # fotografie a grafika k Asijské divočině
 ├── scss/
+│   ├── _asie.scss
 │   ├── _base.scss
 │   ├── _boundaries.scss
+│   ├── _dekujeme.scss
 │   ├── _footer.scss
 │   ├── _hero.scss
 │   ├── _homepage.scss
-│   ├── _menu.scss
 │   ├── _join.scss
+│   ├── _menu.scss
+│   ├── _ochrana-osobnich-udaju.scss
+│   ├── _page-360.scss
+│   ├── _stops.scss
 │   ├── _variables.scss
 │   └── style.scss
 ├── .eleventy.js
+├── .gitignore
 ├── 360.html
 ├── blog.html
+├── dekujeme.html
 ├── index.html
 ├── kdo_jsme.html
+├── ochrana-osobnich-udaju.html
 ├── pridejte_se.html
 ├── zastavky.html
 ├── package.json
+├── package-lock.json
 └── README.md
-```
 
 ### Barevná paleta
 
@@ -150,3 +181,40 @@ Projekt i web jsou v rané fázi. Základní směr, hodnoty, vizuální identita
 
 > Linka 360 je cesta. Občas bloudíme. Občas improvizujeme. Ale dává nám smysl.
 
+
+### Ochrana osobních údajů
+
+Stránka `/ochrana-osobnich-udaju/` popisuje zpracování údajů zájemců a přihlášených účastníků aktivit Linky 360.
+
+První veřejný formulář sbírá pouze údaje potřebné pro vyřízení zájmu a navazující komunikaci. Podrobnější údaje, včetně fakturačních a zdravotních informací, se zjišťují až po přijetí dítěte.
+
+Souhlas se zpracováním zdravotních údajů a případný souhlas s fotografováním musí být vedeny samostatně. Souhlas s fotografováním není podmínkou účasti dítěte.
+
+Odpovědi z formulářů se nemají uchovávat déle, než je nutné pro uvedený účel.
+
+
+### Organizace SCSS
+
+Styly jsou rozdělené podle společných částí webu a jednotlivých stránek. Každý modul se připojuje v souboru `style.scss` pomocí `@use`.
+
+Příklady:
+
+```scss
+@use "variables";
+@use "base";
+@use "menu";
+@use "hero";
+@use "homepage";
+@use "asie";
+@use "ochrana-osobnich-udaju";
+@use "dekujeme";
+@use "footer";
+
+
+### Plánované technické úpravy
+
+- Vytvořit společný modul `_buttons.scss` pro opakovaně používané třídy `.button` a `.button--primary`.
+- Přesunout do společných modulů také opakované styly kontejnerů, pokud se budou objevovat na dalších stránkách.
+- Odstranit následně duplicitní definice tlačítek z `_asie.scss` a `_dekujeme.scss`.
+- Otestovat Netlify Forms na veřejně nasazeném webu a nastavit e-mailové upozornění.
+- Po potvrzení podoby kroužku doplnit medailonek Kamila a referenci rodiče.
