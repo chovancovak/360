@@ -58,10 +58,20 @@ Při psaní dalšího obsahu držíme zejména tyto zásady:
 
 - **Úvod** — představení projektu, hlavní myšlenka, principy, příběh zakladatelů, hranice a výzva k zapojení.
 - **360** — stránka věnovaná významu linky a cestě projektu.
-- **Zastávky** — místa, aktivity nebo etapy společné cesty.
+- **Zastávky** — místa, aktivity a etapy společné cesty.
 - **Kdo jsme** — podrobnější představení Karolíny, Kamila a vzniku projektu.
+- **Akce** — samostatné stránky aktuálních kroužků, setkání a dalších aktivit.
 - **Blog** — články a záznamy zkušeností.
 - **Přidejte se** — kontakt a cesta pro rodiny, které se chtějí ozvat.
+- **Ochrana osobních údajů** — informace o zpracování údajů zájemců a účastníků aktivit Linky 360.
+
+### Zažij asijskou divočinu
+
+První samostatnou akcí zveřejněnou na webu je podzimní venkovní kroužek **Zažij asijskou divočinu**.
+
+Děti při něm prostřednictvím velké mapy, zahrady, příběhů, knih, realistických modelů zvířat, přírodních materiálů a skutečných nástrojů objevují různé oblasti a ekosystémy Asie. Program reaguje na počasí, proměnu ročního období i zájem konkrétní skupiny.
+
+Stránka obsahuje podrobnosti o programu, přístupu k dětem, venkovním zázemí, vybavení, termínech, průvodcích a podmínkách účasti. Součástí je také krátký formulář pro projevení zájmu.
 
 ## Technické řešení
 

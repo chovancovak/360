@@ -1,0 +1,160 @@
+@use "variables" as *;
+
+// =====================================================
+// DĚKOVACÍ STRÁNKA
+// =====================================================
+
+.thank-you {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 8rem 1rem 4rem;
+    overflow: hidden;
+    color: $color-linka-text;
+    background-color: $color-linka-bg;
+    font-family: "Source Sans 3", sans-serif;
+
+    // Dekorativní zlatý kruh
+    &::before {
+        content: "";
+        position: absolute;
+        top: 15%;
+        left: -8rem;
+        width: 20rem;
+        height: 20rem;
+        border: 3px solid rgba($color-linka-yellow, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    // Jemná terakotová skvrna
+    &::after {
+        content: "";
+        position: absolute;
+        right: -7rem;
+        bottom: -8rem;
+        width: 24rem;
+        height: 24rem;
+        border-radius: 50%;
+        background-color: rgba($color-perma-clay, 0.08);
+        pointer-events: none;
+    }
+
+    .asia-section {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 0;
+    }
+
+    .container {
+        width: min(100%, 1200px);
+        margin-inline: auto;
+
+        &--narrow {
+            width: min(100%, 720px);
+        }
+    }
+
+    h1 {
+        margin: 0 0 1.5rem;
+        color: $color-linka-brown;
+        font-family: "Libre Baskerville", serif;
+        font-size: clamp(2.3rem, 6vw, 4rem);
+        line-height: 1.2;
+    }
+
+    p {
+        max-width: 620px;
+        margin: 0 0 1.25rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        margin-top: 1rem;
+        padding: 0.8rem 1.6rem;
+        border: 2px solid $color-perma-clay;
+        border-radius: 999px;
+        color: #fff;
+        background-color: $color-perma-clay;
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        text-decoration: none;
+        transition:
+            color 180ms ease,
+            background-color 180ms ease,
+            border-color 180ms ease,
+            transform 180ms ease;
+
+        &:hover {
+            color: #fff;
+            border-color: $color-linka-brown;
+            background-color: $color-linka-brown;
+            transform: translateY(-2px);
+        }
+
+        &:focus-visible {
+            outline: 3px solid $color-linka-yellow;
+            outline-offset: 4px;
+        }
+    }
+}
+
+
+// =====================================================
+// MOBIL
+// =====================================================
+
+@media (max-width: 576px) {
+    .thank-you {
+        align-items: flex-start;
+        min-height: 100svh;
+        padding: 7rem 1rem 3rem;
+
+        &::before {
+            top: 8%;
+            left: -9rem;
+            width: 17rem;
+            height: 17rem;
+        }
+
+        &::after {
+            right: -9rem;
+            bottom: -6rem;
+            width: 20rem;
+            height: 20rem;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .button {
+            width: 100%;
+        }
+    }
+}
+
+
+// =====================================================
+// OMEZENÍ ANIMACÍ
+// =====================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .thank-you .button {
+        transition: none;
+    }
+}

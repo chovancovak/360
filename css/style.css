@@ -2201,6 +2201,198 @@ h1, h2, h3, .manifest-title {
     transition: none;
   }
 }
+.privacy-page {
+  min-height: 100vh;
+  padding: clamp(8rem, 12vw, 10rem) 0 clamp(4rem, 8vw, 7rem);
+  color: #22282B;
+  background-color: #F4EFE6;
+  font-family: "Source Sans 3", sans-serif;
+  line-height: 1.7;
+}
+.privacy-page .container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+.privacy-page .container--narrow {
+  width: min(100% - 2rem, 820px);
+}
+.privacy-page h1,
+.privacy-page h2 {
+  color: #4B3C29;
+  font-family: "Libre Baskerville", serif;
+  line-height: 1.25;
+}
+.privacy-page h1 {
+  max-width: 760px;
+  margin: 0 0 2rem;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+.privacy-page h2 {
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgba(224, 177, 31, 0.55);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+.privacy-page p {
+  margin: 0 0 1.25rem;
+}
+.privacy-page a {
+  color: #B85C38;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+.privacy-page a:hover {
+  color: #4B3C29;
+}
+.privacy-page a:focus-visible {
+  outline: 3px solid #E0B11F;
+  outline-offset: 4px;
+}
+.privacy-page__updated {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(34, 40, 43, 0.15);
+  color: rgba(34, 40, 43, 0.7);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .privacy-page {
+    padding-top: 7rem;
+  }
+  .privacy-page .container,
+  .privacy-page .container--narrow {
+    width: min(100% - 1.5rem, 100%);
+  }
+  .privacy-page h1 {
+    font-size: 2.2rem;
+  }
+  .privacy-page h2 {
+    margin-top: 2.4rem;
+  }
+}
+.thank-you {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 8rem 1rem 4rem;
+  overflow: hidden;
+  color: #22282B;
+  background-color: #F4EFE6;
+  font-family: "Source Sans 3", sans-serif;
+}
+.thank-you::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: -8rem;
+  width: 20rem;
+  height: 20rem;
+  border: 3px solid rgba(224, 177, 31, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.thank-you::after {
+  content: "";
+  position: absolute;
+  right: -7rem;
+  bottom: -8rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background-color: rgba(184, 92, 56, 0.08);
+  pointer-events: none;
+}
+.thank-you .asia-section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+}
+.thank-you .container {
+  width: min(100%, 1200px);
+  margin-inline: auto;
+}
+.thank-you .container--narrow {
+  width: min(100%, 720px);
+}
+.thank-you h1 {
+  margin: 0 0 1.5rem;
+  color: #4B3C29;
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  line-height: 1.2;
+}
+.thank-you p {
+  max-width: 620px;
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.thank-you .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid #B85C38;
+  border-radius: 999px;
+  color: #fff;
+  background-color: #B85C38;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.thank-you .button:hover {
+  color: #fff;
+  border-color: #4B3C29;
+  background-color: #4B3C29;
+  transform: translateY(-2px);
+}
+.thank-you .button:focus-visible {
+  outline: 3px solid #E0B11F;
+  outline-offset: 4px;
+}
+
+@media (max-width: 576px) {
+  .thank-you {
+    align-items: flex-start;
+    min-height: 100svh;
+    padding: 7rem 1rem 3rem;
+  }
+  .thank-you::before {
+    top: 8%;
+    left: -9rem;
+    width: 17rem;
+    height: 17rem;
+  }
+  .thank-you::after {
+    right: -9rem;
+    bottom: -6rem;
+    width: 20rem;
+    height: 20rem;
+  }
+  .thank-you h1 {
+    font-size: 2.3rem;
+  }
+  .thank-you p {
+    font-size: 1rem;
+  }
+  .thank-you .button {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .thank-you .button {
+    transition: none;
+  }
+}
 .site-footer {
   background-color: #F4EFE6;
   padding: 6rem 2rem 4rem 2rem;

@@ -2,7 +2,7 @@
 layout: layouts/home.njk
 title: Zažij asijskou divočinu
 description: Venkovní podzimní kroužek pro děti plný dobrodružství, objevování a spolupráce.
-permalink: /akce/asie/index.html
+permalink: /asie/index.html
 hideTitle: true
 ---
 
@@ -361,11 +361,8 @@ hideTitle: true
                     <h3>Karolína Chovancová</h3>
 
                     <p>
-                        Jsem máma dvou dětí, vystudová pedagožka, koučka a zakladatelka Linky 360.
-                        Rok jsem vedla skupinu dětí v domácím
-                        vzdělávání. Ve své práci propojuji skutečný život,
-                        přírodu, dětskou zvídavost, spolupráci a hlavně prostor
-                        pro vlastní cestu.
+                        Jsem máma dvou dětí, vystudovaná pedagožka, koučka a zakladatelka Linky 360. Rok jsem vedla skupinu dětí v domácím vzdělávání. Ve své práci
+                         propojuji skutečný život, přírodu, dětskou zvídavost a spolupráci – a především vytvářím prostor, v němž může každé dítě hledat vlastní cestu.
                     </p>
 
                     {# <a href="/o-mne/">Více o mně</a> #}
@@ -376,7 +373,12 @@ hideTitle: true
             <div class="asia-guide">
                 <div class="asia-guide__content">
                     <h3>Kamil Chovanec</h3>
-                    <p>Text medailonku...</p>
+                    <p>
+                        Jsem táta dvou dětí a vystudovaný matematik. Mám rád šifrovací hry, praktické tvoření a hledání cest, jak dětem umožnit přemýšlet, 
+                        zkoušet a objevovat vlastní řešení. Vzdělávám se v Montessori pedagogice a dlouhodobě se věnuji permakultuře, pěstování a stavění. 
+                        V zahradě jsem vybudoval zázemí, které budou děti při svých výpravách využívat. Základem mého přístupu je respekt k dětem, 
+                        přírodě a všem živým bytostem.
+                    </p>
                 </div>
             </div>
            
@@ -421,6 +423,7 @@ hideTitle: true
             <form
                 name="asie-zajem"
                 method="POST"
+                action="/akce/dekujeme/"
                 data-netlify="true"
                 netlify-honeypot="website"
                 class="asia-form"
@@ -507,22 +510,27 @@ hideTitle: true
                 <div class="asia-form__consent">
                     <input
                         type="checkbox"
-                        id="consent"
-                        name="souhlas-kontaktovani"
+                        id="privacy-notice"
+                        name="seznameni-s-ochranou-udaju"
                         value="ano"
                         required
                     >
 
-                    <label for="consent">
-                        Souhlasím s použitím uvedených údajů pro vyřízení
-                        zájmu o kroužek a následnou komunikaci.
+                    <label for="privacy-notice">
+                        Seznámil/a jsem se s
+                        <a href="/ochrana-osobnich-udaju/" target="_blank">
+                            informacemi o zpracování osobních údajů
+                        </a>.
                     </label>
                 </div>
+
+                
 
                 <button type="submit" class="button button--primary">
                     Odeslat zájem
                 </button>
             </form>
+
 
             <div class="asia-contact">
                 <h3>Chcete se nejdřív na něco zeptat?</h3>
