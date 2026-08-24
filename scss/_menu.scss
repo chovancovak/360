@@ -1,17 +1,17 @@
 @use "variables" as *;
 
 .main-nav {
-  position: absolute; // Drží se nahoře, neruší kruh
+  position: absolute;
   top: 0;
   right: 0;
   z-index: 100;
   padding: 2rem;
 
-  @include mobil {
-    position: relative; // Na mobilu uteče z kruhu dolů nebo nad něj
+  @media (max-width: 900px) {
+    position: relative; //Na tabletu a mobilu zabere vlastní místo nad obsahem
+    width: 100%;
     padding: 1.5rem 1rem;
     text-align: center;
-    width: 100%;
   }
 
   &__container {
@@ -19,38 +19,99 @@
     gap: 2rem;
     align-items: center;
 
-    @include mobil {
+    @media (max-width: 900px) {
+      flex-wrap: wrap;
       justify-content: center;
-      flex-wrap: wrap; // Aby se odkazy na malém displeji naskládaly pod sebe
-      gap: 1rem;
+      gap: 1rem 1.4rem;
     }
   }
 
   &__link {
-    text-decoration: none;
+    position: relative;
+    padding: 0.35rem 0;
+    color: $color-linka-brown;
     font-family: $bezpatka;
     font-size: 0.95rem;
     font-weight: 400;
-    color: $color-linka-brown;
     letter-spacing: 1px;
-    text-transform: uppercase; // Jemný industriální detail (číslo linky)
-    transition: color 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
 
     &:hover {
       color: $color-linka-yellow;
     }
 
-    // Speciální zvýrazněný odkaz pro "Přidejte se"
-    &--cta {
-      font-family: $patka;
-      text-transform: none;
-      font-weight: 700;
-      border-bottom: 2px solid $color-linka-yellow;
-      padding-bottom: 2px;
-      
-      &:hover {
-        border-bottom-color: $color-linka-brown;
+    &:focus-visible {
+      outline: 3px solid rgba($color-linka-yellow, 0.5);
+      outline-offset: 5px;
+    }
+
+
+    // Právě otevřená stránka
+    &--active:not(.main-nav__link--cta) {
+      color: $color-linka-brown;
+      font-weight: 600;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.45rem;
+        left: 50%;
+        width: 0.45rem;
+        height: 0.45rem;
+        background-color: $color-linka-yellow;
+        border-radius: 50%;
+        transform: translateX(-50%);
       }
+    }
+
+
+    // Výzva k akci – vypadá jako tlačítko, ne jako aktivní záložka
+    &--cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      background-color: $color-linka-yellow;
+      border: 2px solid $color-linka-yellow;
+      border-radius: 999px;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $color-linka-brown;
+        border-color: $color-linka-brown;
+        color: $color-linka-bg;
+        transform: translateY(-2px);
+      }
+
+      // Když jsme skutečně na stránce Přidejte se
+      &.main-nav__link--active {
+        background-color: $color-linka-brown;
+        border-color: $color-linka-brown;
+        color: $color-linka-bg;
+        box-shadow: 0 0 0 4px rgba($color-linka-yellow, 0.35);
+      }
+    }
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .main-nav__link {
+    transition: none;
+
+    &:hover,
+    &:focus-visible {
+      transform: none;
     }
   }
 }

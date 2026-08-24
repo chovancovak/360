@@ -1,10 +1,63 @@
-<nav class="main-nav">
+<nav class="main-nav" aria-label="Hlavní navigace">
   <div class="main-nav__container">
-    <a href="/" class="main-nav__link">úvod</a>
-    <a href="/360" class="main-nav__link">360</a>
-    <a href="/zastavky" class="main-nav__link">Zastávky</a>
-    {# <a href="/kdo_jsme" class="main-nav__link">Kdo jsme</a> #}
-    {# <a href="/blog" class="main-nav__link">Blog</a> #}
-    <a href="/pridejte_se" class="main-nav__link main-nav__link--cta">Přidejte se</a>
+
+    <a
+      href="/"
+      class="main-nav__link{% if navKey == 'uvod' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'uvod' %}aria-current="page"{% endif %}
+    >
+      Úvod
+    </a>
+
+    <a
+      href="/360"
+      class="main-nav__link{% if navKey == '360' %} main-nav__link--active{% endif %}"
+      {% if navKey == '360' %}aria-current="page"{% endif %}
+    >
+      360
+    </a>
+
+    <a
+      href="/zastavky"
+      class="main-nav__link{% if navKey == 'zastavky' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'zastavky' %}aria-current="page"{% endif %}
+    >
+      Zastávky
+    </a>
+
+    <a
+      href="/o-nas"
+      class="main-nav__link{% if navKey == 'o-nas' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'o-nas' %}aria-current="page"{% endif %}
+    >
+      O nás
+    </a>
+
+    <a
+      href="/co-se-deje"
+      class="main-nav__link{% if navKey == 'co-se-deje' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'co-se-deje' %}aria-current="page"{% endif %}
+    >
+      Co se děje
+    </a>
+
+    {#
+    <a
+      href="/blog"
+      class="main-nav__link{% if navKey == 'blog' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'blog' %}aria-current="page"{% endif %}
+    >
+      Blog
+    </a>
+    #}
+
+    <a
+      href="/pridejte-se"
+      class="main-nav__link main-nav__link--cta{% if navKey == 'pridejte-se' %} main-nav__link--active{% endif %}"
+      {% if navKey == 'pridejte-se' %}aria-current="page"{% endif %}
+    >
+      Přidejte se
+    </a>
+
   </div>
 </nav>

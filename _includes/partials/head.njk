@@ -1,13 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang or 'cs' }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linka 360</title>
+
+
+    {# Jazyk stránky #}
+    {% set pageLang = lang or 'cs' %}
+
+    {% if pageLang == 'en' %}
+        {% set pageLocale = 'en_US' %}
+        {% set defaultImageAlt = 'Linka 360 – a shared journey of discovery and real life.' %}
+    {% else %}
+        {% set pageLocale = 'cs_CZ' %}
+        {% set defaultImageAlt = 'Linka 360 – společná cesta za objevováním a reálným životem.' %}
+    {% endif %}
+
+
+    {# Název stránky #}
+    {% if seoTitle %}
+        {% set metaTitle = seoTitle %}
+    {% elif title and title != site.name %}
+        {% set metaTitle = title ~ ' | ' ~ site.name %}
+    {% else %}
+        {% set metaTitle = site.defaultTitle %}
+    {% endif %}
+
+
+    {# Popis, obrázek a adresy #}
+    {% set metaDescription = description or site.defaultDescription %}
+    {% set metaImage = ogImage or site.defaultOgImage %}
+    {% set metaImageAlt = ogImageAlt or defaultImageAlt %}
+    {% set canonicalUrl = site.url ~ (canonicalPath or page.url) %}
+    {% set absoluteImageUrl = site.url ~ metaImage %}
+
+
+    <title>{{ metaTitle }}</title>
+
+    <meta name="description" content="{{ metaDescription }}">
+
+
+    {# Indexace #}
+    {% if noindex %}
+        <meta name="robots" content="noindex, nofollow">
+    {% else %}
+        <meta name="robots" content="index, follow, max-image-preview:large">
+    {% endif %}
+
+
+    {# Kanonická adresa #}
+    <link rel="canonical" href="{{ canonicalUrl }}">
+
+
+    {# Google Search Console – pouze při ověření pomocí HTML tagu #}
+    {% if site.googleSiteVerification %}
+        <meta
+            name="google-site-verification"
+            content="{{ site.googleSiteVerification }}"
+        >
+    {% endif %}
+
+
+    {# Open Graph #}
+    <meta property="og:title" content="{{ metaTitle }}">
+    <meta property="og:description" content="{{ metaDescription }}">
+    <meta property="og:image" content="{{ absoluteImageUrl }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ metaImageAlt }}">
+    <meta property="og:type" content="{{ ogType or 'website' }}">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:locale" content="{{ pageLocale }}">
+
+
+    {# Twitter / X Cards #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ metaTitle }}">
+    <meta name="twitter:description" content="{{ metaDescription }}">
+    <meta name="twitter:image" content="{{ absoluteImageUrl }}">
+    <meta name="twitter:image:alt" content="{{ metaImageAlt }}">
+
+
+    {# Jazykové varianty #}
+    {% if translations %}
+        {% for languageCode, languageUrl in translations %}
+            <link
+                rel="alternate"
+                hreflang="{{ languageCode }}"
+                href="{{ site.url }}{{ languageUrl }}"
+            >
+        {% endfor %}
+
+        {% if translations.cs %}
+            <link
+                rel="alternate"
+                hreflang="x-default"
+                href="{{ site.url }}{{ translations.cs }}"
+            >
+        {% endif %}
+    {% endif %}
+
+
+    {# Barva prohlížeče na některých mobilních zařízeních #}
+    <meta name="theme-color" content="#F4EFE6">
+
+
+    {# CSS #}
     <link rel="stylesheet" href="/css/style.css">
+
+
+    {# Písma #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    {# Favikony #}
+    {# <link rel="icon" href="/img/favicon.svg" type="image/svg+xml"> #}
+    <link rel="icon" href="/img/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/img/favicon-512.png" type="image/png" sizes="512x512">
 
 </head>

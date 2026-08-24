@@ -396,40 +396,165 @@
 // REFERENCE
 // =====================================================
 
-.asia-reference {
-    position: relative;
-    margin: 0;
-    padding: clamp(2rem, 5vw, 3.5rem);
-    border-left: 6px solid $color-linka-yellow;
-    border-radius: 0 1rem 1rem 0;
-    background-color: #fff;
-    box-shadow: 0 18px 50px rgba($color-linka-text, 0.08);
+// .asia-reference {
+//     position: relative;
+//     margin: 0;
+//     padding: clamp(2rem, 5vw, 3.5rem);
+//     border-left: 6px solid $color-linka-yellow;
+//     border-radius: 0 1rem 1rem 0;
+//     background-color: #fff;
+//     box-shadow: 0 18px 50px rgba($color-linka-text, 0.08);
 
-    &::before {
-        content: "“";
-        position: absolute;
-        top: 0.3rem;
-        right: 1.5rem;
-        color: rgba($color-linka-yellow, 0.35);
-        font-family: "Libre Baskerville", serif;
-        font-size: 7rem;
-        line-height: 1;
-    }
+//     &::before {
+//         content: "“";
+//         position: absolute;
+//         top: 0.3rem;
+//         right: 1.5rem;
+//         color: rgba($color-linka-yellow, 0.35);
+//         font-family: "Libre Baskerville", serif;
+//         font-size: 7rem;
+//         line-height: 1;
+//     }
+
+//     p {
+//         position: relative;
+//         z-index: 1;
+//         font-family: "Libre Baskerville", serif;
+//         font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+//         line-height: 1.65;
+//     }
+
+//     footer {
+//         color: $color-linka-green;
+//         font-weight: 700;
+//     }
+// }
+
+.asia-section--reference {
+  background-color: rgba(#ffffff, 0.42);
+}
+
+.asia-reference {
+  position: relative;
+  margin: 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  background-color: $color-linka-bg;
+  border-left: 5px solid $color-linka-yellow;
+  border-radius: 0 1.5rem 1.5rem 0;
+  box-shadow: 0 1.5rem 3.5rem rgba($color-linka-brown, 0.08);
+
+  &::before {
+    content: "„";
+    position: absolute;
+    top: 0.7rem;
+    right: clamp(1.5rem, 4vw, 3rem);
+    color: rgba($color-linka-yellow, 0.35);
+    font-family: $patka;
+    font-size: clamp(5rem, 10vw, 8rem);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
 
     p {
-        position: relative;
-        z-index: 1;
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-        line-height: 1.65;
+      margin: 0 0 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
-    footer {
+    p:first-child {
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(1.12rem, 2vw, 1.3rem);
+      line-height: 1.7;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba($color-linka-yellow, 0.55);
+}
+
+&__photo {
+    flex: 0 0 auto;
+    width: 7rem;
+    height: 7rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 3px solid rgba($color-linka-yellow, 0.55);
+}
+
+&__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    strong {
+        color: $color-linka-brown;
+        font-family: $patka;
+        font-size: 1.1rem;
+    }
+
+    span {
+        color: rgba($color-linka-text, 0.72);
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    a {
         color: $color-linka-green;
         font-weight: 700;
+        text-decoration-color: rgba($color-linka-green, 0.4);
+        text-underline-offset: 0.2em;
+        transition:
+            color 0.2s ease,
+            text-decoration-color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: $color-perma-clay;
+            text-decoration-color: currentColor;
+        }
     }
 }
 
+}
+
+@media (max-width: 576px) {
+  .asia-reference {
+    padding: 1.6rem 1.35rem;
+    border-left-width: 4px;
+    border-radius: 0 1rem 1rem 0;
+
+    &::before {
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 5rem;
+    }
+
+    &__text p {
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    
+    &__photo {
+    width: 5rem;
+    height: 5rem;
+}
+  }
+}
 
 // =====================================================
 // FORMULÁŘ

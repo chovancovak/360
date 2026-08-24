@@ -1,0 +1,539 @@
+@use "variables" as *;
+
+
+// ========================================
+// O NÁS
+// ========================================
+
+.about-us {
+  overflow: hidden;
+  background-color: $color-linka-bg;
+  color: $color-linka-text;
+
+  &__container {
+    width: min(100% - 3rem, 1120px);
+    margin-inline: auto;
+  }
+
+  &__eyebrow {
+    margin: 0 0 1rem;
+    color: $color-linka-green;
+    font-family: $bezpatka;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+
+  // ========================================
+  // ÚVOD
+  // ========================================
+
+  &__hero {
+    position: relative;
+    padding: clamp(6rem, 11vw, 10rem) 0 clamp(5rem, 9vw, 8rem);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 5rem;
+      right: -7rem;
+      width: clamp(18rem, 38vw, 35rem);
+      height: clamp(18rem, 38vw, 35rem);
+      border: 5px solid rgba($color-linka-yellow, 0.65);
+      border-radius: 48% 52% 46% 54% / 54% 45% 55% 46%;
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: clamp(10rem, 18vw, 14rem);
+      right: clamp(3rem, 11vw, 10rem);
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: $color-linka-bg;
+      border: 5px solid $color-linka-yellow;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 0 2rem;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  &__lead {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 0 clamp(3rem, 6vw, 5rem);
+    font-family: $patka;
+    font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+    line-height: 1.55;
+  }
+
+  &__numbers {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 820px;
+    overflow: hidden;
+    background-color: $color-linka-brown;
+    border-radius: 1.75rem;
+  }
+
+  &__number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(1.6rem, 4vw, 2.8rem);
+    color: $color-linka-bg;
+    text-align: center;
+
+    & + & {
+      border-left: 1px solid rgba($color-linka-bg, 0.2);
+    }
+
+    strong {
+      color: $color-linka-yellow;
+      font-family: $patka;
+      font-size: clamp(3rem, 7vw, 5.25rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    span {
+      margin-top: 0.65rem;
+      font-family: $bezpatka;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+
+  &__children-note {
+    max-width: 820px;
+    margin: 1rem 0 0;
+    color: rgba($color-linka-text, 0.68);
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+
+  // ========================================
+  // JAK LINKA VZNIKÁ
+  // ========================================
+
+  &__story {
+    padding: clamp(5rem, 10vw, 9rem) 0;
+    background-color: rgba(#ffffff, 0.42);
+  }
+
+  &__story-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+
+  &__section-heading {
+    h2 {
+      max-width: 480px;
+      margin: 0;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+  }
+
+  &__story-text {
+    p {
+      margin: 0 0 1.4rem;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+  }
+
+  &__quote {
+    position: relative;
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    padding: 1.8rem 0 0 clamp(1.5rem, 4vw, 3rem);
+    border-top: 4px solid $color-linka-yellow;
+    color: $color-linka-brown;
+    font-family: $patka;
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.55;
+
+    &::before {
+      content: "„";
+      position: absolute;
+      top: 0.8rem;
+      left: 0;
+      color: $color-linka-yellow;
+      font-family: $patka;
+      font-size: 3rem;
+      font-style: normal;
+      line-height: 1;
+    }
+  }
+
+
+  // ========================================
+  // LIDÉ
+  // ========================================
+
+  &__people {
+    padding: clamp(6rem, 11vw, 10rem) 0;
+  }
+
+  &__people-header {
+    max-width: 760px;
+    margin-bottom: clamp(4rem, 9vw, 7rem);
+
+    h2 {
+      margin: 0 0 1.5rem;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    > p:not(.about-us__eyebrow) {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+  }
+
+  &__person {
+    display: grid;
+    grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: center;
+
+    & + & {
+      margin-top: clamp(6rem, 12vw, 11rem);
+    }
+
+    &--reverse {
+      grid-template-columns: minmax(0, 1.22fr) minmax(270px, 0.78fr);
+
+      .about-us__portrait {
+        grid-column: 2;
+        grid-row: 1;
+        border-radius: 48% 52% 1.5rem 1.5rem;
+      }
+
+      .about-us__person-content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+
+  &__portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    margin: 0;
+    background-color: rgba($color-linka-green, 0.15);
+    border-radius: 52% 48% 1.5rem 1.5rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 1rem;
+      border: 2px solid rgba($color-linka-bg, 0.65);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__person-content {
+    h3 {
+      margin: 0 0 1.5rem;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    > p:not(.about-us__role) {
+      margin: 0 0 1.3rem;
+      line-height: 1.75;
+    }
+  }
+
+  &__role {
+    margin: 0 0 0.75rem;
+    color: $color-linka-green;
+    font-family: $bezpatka;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__person-links {
+    margin-top: 2rem;
+  }
+
+  &__text-link {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: $color-linka-brown;
+    font-weight: 700;
+    text-decoration-color: $color-linka-yellow;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3rem;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-perma-clay;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba($color-linka-yellow, 0.5);
+      outline-offset: 4px;
+    }
+  }
+
+
+  // ========================================
+  // SOUKROMÍ
+  // ========================================
+
+  &__privacy {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background-color: $color-linka-brown;
+    color: $color-linka-bg;
+
+    .about-us__eyebrow {
+      color: $color-linka-yellow;
+    }
+  }
+
+  &__privacy-content {
+    max-width: 880px;
+    margin-inline: auto;
+
+    h2 {
+      max-width: 780px;
+      margin: 0 0 2.5rem;
+      color: $color-linka-bg;
+      font-family: $patka;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+  }
+
+  &__privacy-text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 6vw, 5rem);
+
+    p {
+      position: relative;
+      margin: 0;
+      padding-top: 1.5rem;
+      color: rgba($color-linka-bg, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.75;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3rem;
+        height: 4px;
+        background-color: $color-linka-yellow;
+        border-radius: 999px;
+      }
+    }
+  }
+
+
+  // ========================================
+  // ZÁVĚR
+  // ========================================
+
+  &__ending {
+    padding: clamp(6rem, 11vw, 10rem) 0;
+  }
+
+  &__ending-content {
+    max-width: 850px;
+    margin-inline: auto;
+    text-align: center;
+
+    h2 {
+      margin: 0 0 2rem;
+      color: $color-linka-brown;
+      font-family: $patka;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    > p:not(.about-us__eyebrow) {
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+  }
+}
+
+
+// ========================================
+// TABLET
+// ========================================
+
+@media (max-width: 768px) {
+  .about-us {
+
+    &__container {
+      width: min(100% - 2.5rem, 680px);
+    }
+
+    &__story-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    &__person,
+    &__person--reverse {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+
+      .about-us__portrait {
+        grid-column: 1;
+        grid-row: 1;
+        width: min(100%, 450px);
+      }
+
+      .about-us__person-content {
+        grid-column: 1;
+        grid-row: 2;
+      }
+    }
+
+    &__privacy-text {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+}
+
+
+// ========================================
+// MOBIL
+// ========================================
+
+@media (max-width: 576px) {
+  .about-us {
+
+    &__container {
+      width: min(100% - 2rem, 520px);
+    }
+
+    &__hero {
+      padding-top: 5rem;
+
+      &::before {
+        top: 3rem;
+        right: -10rem;
+        opacity: 0.65;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-size: clamp(3rem, 15vw, 4.5rem);
+    }
+
+    &__lead {
+      font-size: 1.25rem;
+    }
+
+    &__numbers {
+      grid-template-columns: 1fr;
+      border-radius: 1.25rem;
+    }
+
+    &__number {
+      flex-direction: row;
+      gap: 1.25rem;
+      justify-content: center;
+      padding: 1.25rem;
+
+      & + & {
+        border-top: 1px solid rgba($color-linka-bg, 0.2);
+        border-left: 0;
+      }
+
+      strong {
+        min-width: 3.5rem;
+        font-size: 3rem;
+        text-align: right;
+      }
+
+      span {
+        min-width: 5rem;
+        margin-top: 0;
+        text-align: left;
+      }
+    }
+
+    &__children-note {
+      text-align: left;
+    }
+
+    &__quote {
+      padding-left: 1.25rem;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__person + &__person {
+      margin-top: 6rem;
+    }
+
+    &__portrait {
+      border-radius: 44% 44% 1.1rem 1.1rem;
+    }
+  }
+}

@@ -56,14 +56,18 @@ Při psaní dalšího obsahu držíme zejména tyto zásady:
 
 ## Současná struktura webu
 
-- **Úvod** — představení projektu, hlavní myšlenka, principy, příběh zakladatelů, hranice a výzva k zapojení.
+## Současná struktura webu
+
+Samostatné stránky konkrétních kroužků a akcí jsou přístupné ze stránky **Co se děje**. Nemusejí mít vlastní položku v hlavní navigaci.
+- **Úvod** — představení projektu, hlavní myšlenka, principy a výzva k zapojení.
 - **360** — stránka věnovaná významu linky a cestě projektu.
-- **Zastávky** — místa, aktivity a etapy společné cesty.
-- **Kdo jsme** — podrobnější představení Karolíny, Kamila a vzniku projektu.
-- **Akce** — samostatné stránky aktuálních kroužků, setkání a dalších aktivit.
+- **Zastávky** — místa na trase Linky 360 a jejich význam pro projekt.
+- **O nás** — představení současné komunity, Karolíny, Kamila a přístupu k soukromí ostatních rodin a dětí.
+- **Co se děje** — pravidelná setkávání rodin, aktuální aktivity a prostor pro další společné výpravy a události.
 - **Blog** — články a záznamy zkušeností.
 - **Přidejte se** — kontakt a cesta pro rodiny, které se chtějí ozvat.
 - **Ochrana osobních údajů** — informace o zpracování údajů zájemců a účastníků aktivit Linky 360.
+
 
 ### Zažij asijskou divočinu
 
@@ -76,6 +80,94 @@ Stránka obsahuje podrobnosti o programu, přístupu k dětem, venkovním zázem
 ## Technické řešení
 
 Web je jednoduchý statický projekt postavený v Eleventy a stylovaný pomocí SCSS.
+
+### Metadata, sdílení a vyhledávače
+
+Společná metadata webu jsou uložena v souboru `_data/site.json`. Obsahuje název a adresu webu, výchozí titulek, popis, Open Graph obrázek a případný ověřovací kód pro Google Search Console.
+
+Společná část `<head>` dynamicky pracuje s údaji jednotlivých stránek. Podporuje zejména:
+
+* jazyk stránky pomocí `lang`;
+* vlastní titulek a SEO titulek;
+* popis stránky;
+* kanonickou adresu;
+* pravidla indexace;
+* Open Graph metadata pro sdílení;
+* Twitter/X Card;
+* vlastní OG obrázek stránky;
+* favicony a Apple Touch Icon;
+* budoucí propojení jazykových variant pomocí `hreflang`.
+
+Jednotlivé stránky mohou ve front matteru používat například:
+
+---
+title: Zažij asijskou divočinu
+description: Podzimní venkovní kroužek v Kňovicích, při kterém děti objevují zvířata, krajinu a ekosystémy Asie.
+ogImage: /img/asie/og-asijska-divocina.jpg
+ogImageAlt: Panda před velkou mapou Asie – Zažij asijskou divočinu.
+lang: cs
+navKey: co-se-deje
+---
+
+
+Pokud stránka nemá vlastní `ogImage`, použije se společný obrázek:
+
+/img/og-linka-360.jpg
+
+Oba OG obrázky mají rozměr 1200 × 630 px a barevný profil sRGB.
+
+Web používá tyto ikony:
+
+/img/favicon-32.png
+/img/favicon-512.png
+/img/apple-touch-icon.png
+
+
+SVG favicon se v současné verzi nepoužívá.
+
+Stránky, které nemají být součástí výsledků vyhledávání, například děkovací stránka po odeslání formuláře, používají:
+
+
+---
+noindex: true
+---
+
+Šablony `sitemap.njk` a `robots.njk` při sestavení webu automaticky vytvářejí veřejné soubory:
+
+/sitemap.xml
+/robots.txt
+
+### Plánovaná anglická verze
+
+Do budoucna se počítá s anglickou verzí webu. České stránky zůstanou na současných adresách a anglické stránky budou umístěny pod `/en/`.
+
+Předpokládaná struktura:
+
+/o-nas/       česká verze
+/en/about/    anglická verze
+
+
+Layout už podporuje dynamický jazyk dokumentu a Open Graph locale. Výchozím jazykem je čeština:
+
+<html lang="{{ lang or 'cs' }}">
+
+Anglické stránky budou ve front matteru používat:
+
+---
+lang: en
+---
+
+Vzájemně přeložené stránky bude možné propojit pomocí:
+
+translations:
+  cs: /o-nas/
+  en: /en/about/
+
+
+Z těchto údajů se v `<head>` automaticky vytvoří odkazy `hreflang`. Každá jazyková stránka musí mít vlastní kanonickou adresu. Návštěvníci nebudou automaticky přesměrováváni podle jazyka prohlížeče; jazyk si budou moci zvolit pomocí odkazu na webu.
+
+Samotný anglický obsah, překlad navigace a přepínač jazyků zatím nejsou vytvořené.
+
 
 ### Formuláře
 
@@ -96,46 +188,61 @@ Podrobná závazná přihláška bude rodičům odeslána až po potvrzení voln
 
 ### Hlavní soubory a složky
 
-```text
 web360/
 ├── _includes/
-│   ├── layouts/                         # základní šablony stránek
-│   └── partials/                        # partialy včetně grafiky úvodní linky
-├── _site/                               # vygenerovaný web
+│   ├── layouts/
+│       └── home.njk
+│   └── partials/
+│       ├── footer.njk
+│       ├── head.njk
+│       ├── line-hero.njk
+│       └── menu.njk
+├── _site/
 ├── akce/
-│   └── asie.html                        # Zažij asijskou divočinu
-├── css/                                 # zkompilované styly
+│   ├── dekujeme.html
+│   └── asie.html
+├── css/
 ├── img/
 │   ├── 360linka.svg
+│   ├── og-linka-360.jpg
+│   ├── favicon-32.png
+│   ├── favicon-512.png
+│   ├── apple-touch-icon.png
 │   ├── karolina-linka-360.jpg
-│   └── asie/                            # fotografie a grafika k Asijské divočině
+│   ├── kamil-linka-360.jpg
+│   ├── principy/
+│   └── asie/
+│       └── og-asijska-divocina.jpg
 ├── scss/
 │   ├── _asie.scss
 │   ├── _base.scss
 │   ├── _boundaries.scss
+│   ├── _co-se-deje.scss
 │   ├── _dekujeme.scss
 │   ├── _footer.scss
 │   ├── _hero.scss
 │   ├── _homepage.scss
 │   ├── _join.scss
 │   ├── _menu.scss
+│   ├── _o-nas.scss
 │   ├── _ochrana-osobnich-udaju.scss
 │   ├── _page-360.scss
 │   ├── _stops.scss
 │   ├── _variables.scss
 │   └── style.scss
 ├── .eleventy.js
-├── .gitignore
 ├── 360.html
 ├── blog.html
-├── dekujeme.html
+├── co-se-deje.html
 ├── index.html
-├── kdo_jsme.html
+├── o-nas.html
 ├── ochrana-osobnich-udaju.html
-├── pridejte_se.html
+├── pridejte-se.html
 ├── zastavky.html
 ├── package.json
 ├── package-lock.json
+├── robots.njk
+├── sitemap.njk
 └── README.md
 
 ### Barevná paleta
@@ -170,6 +277,20 @@ Základním motivem je žlutá linka a kruh připomínající trasu, pohyb a obj
 
 Rozvržení používá velkorysý prostor, výrazné patkové nadpisy a kratší textové bloky. Vizuální jazyk má podporovat dojem cesty a otevřeného procesu.
 
+
+### Hlavní navigace
+
+Hlavní navigace rozlišuje mezi právě otevřenou stránkou a výzvou k zapojení.
+
+Aktivní stránka je označena malou žlutou tečkou připomínající zastávku na trase. Odkaz **Přidejte se** má podobu žlutého zaobleného tlačítka. Je tak zvýrazněný jako výzva k akci, aniž by působil jako stále aktivní položka menu. Na samotné stránce Přidejte se se jeho barevnost obrátí.
+
+Aktivní položka se nastavuje v úvodních údajích jednotlivých stránek pomocí proměnné `navKey`:
+
+
+---
+navKey: o-nas
+---
+
 ### Animovaná linka v záhlaví
 
 Výrazným prvkem úvodní stránky je SVG grafika `img/360linka.svg`, vložená prostřednictvím partialu `partials/line-hero.njk`. Při načtení stránky se žlutá linka postupně vykresluje, obtáčí hlavní sdělení a vytváří nedokonalý kruh. Animace podporuje představu pohybu, cesty a postupného vznikání projektu. Kruh není dokonale geometrický ani uzavřený jedním přesným tahem — stejně jako Linka 360 zůstává živá, otevřená a proměnlivá.
@@ -199,7 +320,7 @@ Styly jsou rozdělené podle společných částí webu a jednotlivých stránek
 
 Příklady:
 
-```scss
+scss
 @use "variables";
 @use "base";
 @use "menu";
@@ -218,3 +339,13 @@ Příklady:
 - Odstranit následně duplicitní definice tlačítek z `_asie.scss` a `_dekujeme.scss`.
 - Otestovat Netlify Forms na veřejně nasazeném webu a nastavit e-mailové upozornění.
 - Po potvrzení podoby kroužku doplnit medailonek Kamila a referenci rodiče.
+
+* Připojit doménu `linka360.cz` ke Google Search Console pomocí DNS ověření.
+
+* Po ověření webu odeslat sitemapu do Google Search Console a zkontrolovat indexaci hlavních stránek.
+
+* Vytvořit anglickou verzi webu pod `/en/`.
+
+* Doplnit přepínač mezi českou a anglickou verzí stránky.
+
+* Přeložit navigaci a společné části layoutu.
